@@ -1,0 +1,60 @@
+@page "/videos"
+@model MichalSvoboda.Web.Pages.VideosModel
+@{
+    ViewData["Title"] = "Michal Svoboda - Videa";
+}
+
+<section class="section videos-section">
+  <div class="videos-header">
+    <div>
+      <div class="badge">Video Library</div>
+      <h1>Videa z FTP adresare</h1>
+    </div>
+    <p class="lead">
+      Nahraj video soubor do <code>wwwroot/videos</code> a tady se automaticky objevi.
+      Prime URL videa bude fungovat i mimo tento web.
+    </p>
+  </div>
+
+  @if (Model.Videos.Count == 0)
+  {
+    <article class="card">
+      <h2>Zatim tu nic neni</h2>
+      <p class="muted">
+        Na FTP nahraj <code>.mp4</code>, <code>.webm</code>, <code>.mov</code>, <code>.m4v</code> nebo <code>.ogg</code>
+        do slozky <code>wwwroot/videos</code>.
+      </p>
+    </article>
+  }
+  else
+  {
+    <div class="videos-grid">
+      @foreach (var video in Model.Videos)
+      {
+        <article class="card video-card">
+          <div class="video-frame">
+            <video controls preload="metadata" playsinline>
+              <source src="@video.Url" type="@video.ContentType" />
+              Vas prohlizec prehravani videa nepodporuje.
+            </video>
+          </div>
+
+          <div class="video-meta">
+            <div>
+              <h2>@video.DisplayName</h2>
+              <div class="muted small">@video.FileName</div>
+            </div>
+            <div class="small muted">@video.SizeLabel</div>
+          </div>
+
+          <label class="video-link-label" for="@video.InputId">Prime URL</label>
+          <input id="@video.InputId" class="video-link" type="text" value="@video.Url" readonly />
+
+          <div class="cta">
+            <a class="btn primary" href="@video.Url" target="_blank" rel="noreferrer">Otevrit video</a>
+          </div>
+        </article>
+      }
+    </div>
+  }
+</section>

@@ -1,0 +1,124 @@
+@page "/privacy-policy"
+@{
+    Layout = null;
+    ViewData["Title"] = "Privacy Policy";
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        body {
+            margin: 0;
+            background: #f6f8fb;
+            color: #142033;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        .policy-shell {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 48px 20px 72px;
+        }
+
+        .policy-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 24px 60px rgba(20, 32, 51, 0.12);
+        }
+
+        .policy-card h1,
+        .policy-card h2 {
+            color: #0f172a;
+        }
+
+        .policy-card p,
+        .policy-card li {
+            line-height: 1.7;
+        }
+
+        .policy-card ul {
+            padding-left: 20px;
+        }
+
+        .policy-meta {
+            color: #516076;
+            margin-bottom: 24px;
+        }
+
+        @@media (max-width: 640px) {
+            .policy-card {
+                padding: 24px;
+                border-radius: 16px;
+            }
+
+            .policy-shell {
+                padding: 24px 16px 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="policy-shell">
+        <article class="policy-card">
+            <h1>Privacy Policy</h1>
+            <p class="policy-meta">Last updated: March 16, 2026</p>
+
+            <p>
+                This Privacy Policy describes how the application published by Michal Svoboda
+                handles user information.
+            </p>
+
+            <h2>Information We Collect</h2>
+            <p>
+                The application does not intentionally collect personally identifiable information
+                unless it is explicitly provided by the user through direct communication or a feature
+                that requires user input.
+            </p>
+
+            <h2>How Information Is Used</h2>
+            <p>Any information provided by the user may be used only for the following purposes:</p>
+            <ul>
+                <li>to provide and maintain application functionality,</li>
+                <li>to improve the application and fix issues,</li>
+                <li>to respond to user support requests.</li>
+            </ul>
+
+            <h2>Data Sharing</h2>
+            <p>
+                User data is not sold. Data may be processed by service providers only when needed
+                to operate the application or comply with legal obligations.
+            </p>
+
+            <h2>Data Retention</h2>
+            <p>
+                Any data that is processed is retained only for as long as necessary for the purpose
+                for which it was collected, or as required by law.
+            </p>
+
+            <h2>Children's Privacy</h2>
+            <p>
+                The application is not intended to knowingly collect personal information from children.
+                If you believe that personal data of a child has been provided, please make contact
+                using the email below.
+            </p>
+
+            <h2>Security</h2>
+            <p>
+                Reasonable technical and organizational measures are used to protect information
+                against unauthorized access, misuse, or loss.
+            </p>
+
+            <h2>Contact</h2>
+            <p>
+                If you have any questions about this Privacy Policy, contact:
+                <a href="mailto:msvoboda@svobo.eu">msvoboda@svobo.eu</a>
+            </p>
+        </article>
+    </main>
+</body>
+</html>

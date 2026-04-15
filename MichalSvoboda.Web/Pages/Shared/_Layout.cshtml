@@ -1,0 +1,105 @@
+﻿@{
+    var title = ViewData["Title"] as string ?? "Michal Svoboda";
+}
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>@title</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+
+  <header class="topbar">
+    <div class="container">
+      <a class="brand" href="/">MS</a>
+
+      <nav class="nav">
+        <a href="/trip">Trip</a>
+        <a href="/projekty">Projekty</a>
+        <a href="/rodina">Rodina</a>
+        <a href="/videos">Videa</a>
+
+        <a class="nav-pill" href="https://www.linkedin.com/in/misaksvobo/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+
+        <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme">
+          <span class="icon sun" aria-hidden="true">☀</span>
+          <span class="icon moon" aria-hidden="true">🌙</span>
+        </button>
+        <button class="nav-pill accent-toggle" id="accentToggle">
+            🎨 <span id="accentLabel">Neutral</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content" class="container">
+    @RenderBody()
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="muted">© @DateTime.UtcNow.Year Michal Svoboda</div>
+      <div class="muted">Built with .NET</div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    const key = "ms_theme";
+    const root = document.documentElement;
+    function apply(theme) { root.setAttribute("data-theme", theme); }
+
+    const saved = localStorage.getItem(key);
+    if (saved === "light" || saved === "dark") apply(saved);
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const btn = document.getElementById("themeToggle");
+      if (!btn) return;
+      btn.addEventListener("click", function () {
+        const current = root.getAttribute("data-theme") || "light";
+        const next = current === "dark" ? "light" : "dark";
+        apply(next);
+        localStorage.setItem(key, next);
+      });
+    });
+  })();
+  </script>
+  <script>
+        (function () {
+          const root = document.documentElement;
+          const key = "ms_accent";
+
+          const btn = document.getElementById("accentToggle");
+          const label = document.getElementById("accentLabel");
+
+          function applyAccent(mode) {
+            root.dataset.accent = mode;
+            if (label) label.textContent = (mode === "vivid") ? "Vivid" : "Neutral";
+          }
+
+          const saved = localStorage.getItem(key);
+          const initial = (saved === "vivid" || saved === "neutral") ? saved : "neutral";
+          applyAccent(initial);
+
+          if (btn) {
+            btn.addEventListener("click", function () {
+              const current = root.dataset.accent || "neutral";
+              const next = (current === "vivid") ? "neutral" : "vivid";
+              applyAccent(next);
+              localStorage.setItem(key, next);
+            });
+          }
+        })();
+    </script>
+
+</body>
+</html>
