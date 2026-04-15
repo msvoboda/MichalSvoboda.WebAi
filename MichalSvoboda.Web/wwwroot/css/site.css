@@ -579,39 +579,65 @@ h2{
   }
 }
 
-/* --- Page specific dark mode tweaks (Projects, Family, Videos) --- */
+/* --- Page specific dark mode tweaks (Trip, Projects, Family, Videos) --- */
 
 html[data-theme="dark"] .projects-hero {
   background:
     radial-gradient(800px 300px at 0% 0%, rgba(59,130,246,.32), transparent 60%),
-    linear-gradient(180deg,
-      color-mix(in oklab, var(--bg2) 88%, black 12%),
-      color-mix(in oklab, var(--bg2) 60%, black 40%));
+    linear-gradient(180deg, #121a2e, #0a1020);
 }
 
 html[data-theme="dark"] .spotlight {
-  background: linear-gradient(180deg,
-      color-mix(in oklab, var(--bg2) 92%, black 8%),
-      color-mix(in oklab, var(--bg2) 78%, black 22%));
+  background: linear-gradient(180deg, #151f30, #0f1825);
   border-color: rgba(148,163,184,.32);
   box-shadow: 0 22px 48px rgba(0,0,0,.60);
+}
+
+html[data-theme="dark"] .journey-hero {
+  background:
+    linear-gradient(135deg, rgba(70, 120, 180, .22), rgba(60, 90, 140, .16)),
+    #0f1620;
+}
+
+html[data-theme="dark"] .journey-panel {
+  background: rgba(15, 22, 35, 0.85);
+  border-color: rgba(148, 163, 184, .18);
+  box-shadow: 0 18px 40px rgba(0,0,0,.40);
+}
+
+html[data-theme="dark"] .journey-label {
+  color: #a08060;
+}
+
+html[data-theme="dark"] .trip-stop {
+  background: linear-gradient(180deg, #161e2c, #0f1620);
+  border-color: rgba(123, 91, 61, .30);
+  box-shadow: 0 18px 45px rgba(0,0,0,.50);
 }
 
 html[data-theme="dark"] .family-hero {
   background:
     radial-gradient(600px 240px at 10% 10%, rgba(251, 146, 60, .32), transparent 60%),
     radial-gradient(500px 240px at 90% 0%, rgba(253, 224, 71, .28), transparent 60%),
-    linear-gradient(180deg,
-      color-mix(in oklab, var(--bg2) 88%, black 12%),
-      color-mix(in oklab, var(--bg2) 62%, black 38%));
+    linear-gradient(180deg, #161420, #0f1020);
 }
 
 html[data-theme="dark"] .family-member {
-  background: linear-gradient(180deg,
-      color-mix(in oklab, var(--bg2) 92%, black 8%),
-      color-mix(in oklab, var(--bg2) 76%, black 24%));
+  background: linear-gradient(180deg, #141e30, #0f1825);
   border-color: rgba(148,163,184,.35);
   box-shadow: 0 18px 42px rgba(0,0,0,.55);
+}
+
+html[data-theme="dark"] .family-member.ester {
+  background: linear-gradient(180deg, #1c1420, #130f18);
+}
+
+html[data-theme="dark"] .family-member.adam {
+  background: linear-gradient(180deg, #101b2c, #0c1522);
+}
+
+html[data-theme="dark"] .family-member.ema {
+  background: linear-gradient(180deg, #141428, #0e0e1e);
 }
 
 html[data-theme="dark"] .videos-section {
