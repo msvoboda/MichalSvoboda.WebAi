@@ -1,0 +1,20 @@
+[
+  {
+    "name": "F600 – Trip to Milan",
+    "description": "Road trip adventure game inspired by the iconic Barkas B1000 (F600). Navigate through Europe, manage your vintage van, and enjoy the scenic journey all the way to Milan.",
+    "platform": "Windows / Web",
+    "techStack": ["Unity", "C#"],
+    "image": "/images/projects/f600.jpg",
+    "url": null,
+    "downloadUrl": null
+  },
+  {
+    "name": "MyKnowledgeBase",
+    "description": "Personal knowledge management system for storing, tagging, organizing, and quickly retrieving notes and documents. Supports markdown and full-text search.",
+    "platform": "Web",
+    "techStack": [".NET", "C#", "SQLite", "Blazor"],
+    "image": "/images/projects/myknowledgebase.jpg",
+    "url": null,
+    "downloadUrl": null
+  }
+]

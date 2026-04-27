@@ -1,53 +1,73 @@
 @page "/projekty"
+@model MichalSvoboda.Web.Pages.ProjektyModel
 @{
     ViewData["Title"] = "Projekty";
 }
 
 <section class="projects-hero">
   <div>
-    <div class="badge">Projekty</div>
-    <h1>Engineering work presented as a dedicated showcase.</h1>
+    <div class="badge">Osobní projekty</div>
+    <h1>Projekty mimo práci – hry, nástroje a nápady.</h1>
     <p class="lead">
-      Tohle je samostatná stránka pro project portfolio, ne jen další sekce na homepage.
+      Věci, které vznikly z nadšení, experimentování nebo potřeby. Od her po užitečné nástroje.
     </p>
   </div>
 </section>
 
 <section class="section">
-  <div class="stack">
-    <article class="work spotlight">
-      <div class="workhead">
-        <h2>Internal AI Team</h2>
-        <div class="muted">Python • Azure AI • LLMs</div>
-      </div>
-      <ul>
-        <li>Enhanced chatbot capabilities with advanced reasoning.</li>
-        <li>Document analysis and information extraction from structured and unstructured sources.</li>
-        <li>End-to-end AI solutions in Azure including orchestration, monitoring, and lifecycle design.</li>
-      </ul>
+  @if (Model.Projects.Count == 0)
+  {
+    <article class="spotlight">
+      <h2>Zatím žádné projekty</h2>
+      <p class="muted">Přidej projekty do souboru <code>wwwroot/data/projects.json</code>.</p>
     </article>
-
-    <article class="work spotlight">
-      <div class="workhead">
-        <h2>Public Sector API Modernisation</h2>
-        <div class="muted">Java 17 • REST • Security • Caching</div>
-      </div>
-      <ul>
-        <li>Modern REST API implementation with strong security and operational reliability.</li>
-        <li>Background jobs, caching strategy, and maintainable integration contracts.</li>
-        <li>Support for Python modules used in complex testing automation.</li>
-      </ul>
-    </article>
-
-    <article class="work spotlight">
-      <div class="workhead">
-        <h2>GDPR Workflow Platform</h2>
-        <div class="muted">Kotlin • Camunda • PostgreSQL</div>
-      </div>
-      <ul>
-        <li>Main developer for GDPR request processing with compliance focus.</li>
-        <li>Integrations, monitoring, operational improvements, and incident solving in DevSecOps mode.</li>
-      </ul>
-    </article>
-  </div>
+  }
+  else
+  {
+    <div class="personal-projects-grid">
+      @foreach (var project in Model.Projects)
+      {
+        <article class="project-card">
+          @if (!string.IsNullOrEmpty(project.Image))
+          {
+            <div class="project-image">
+              <img src="@project.Image" alt="@project.Name" loading="lazy" />
+            </div>
+          }
+          else
+          {
+            <div class="project-image project-image-placeholder">
+              <span>📦</span>
+            </div>
+          }
+          <div class="project-body">
+            <div class="project-header">
+              <h2>@project.Name</h2>
+              <span class="project-platform">@project.Platform</span>
+            </div>
+            <p class="project-description">@project.Description</p>
+            <div class="project-stack">
+              @foreach (var tech in project.TechStack)
+              {
+                <span class="chip">@tech</span>
+              }
+            </div>
+            @if (!string.IsNullOrEmpty(project.Url) || !string.IsNullOrEmpty(project.DownloadUrl))
+            {
+              <div class="project-links">
+                @if (!string.IsNullOrEmpty(project.Url))
+                {
+                  <a class="btn primary" href="@project.Url" target="_blank" rel="noreferrer">Zobrazit ↗</a>
+                }
+                @if (!string.IsNullOrEmpty(project.DownloadUrl))
+                {
+                  <a class="btn" href="@project.DownloadUrl" target="_blank" rel="noreferrer">Stáhnout ↓</a>
+                }
+              </div>
+            }
+          </div>
+        </article>
+      }
+    </div>
+  }
 </section>
