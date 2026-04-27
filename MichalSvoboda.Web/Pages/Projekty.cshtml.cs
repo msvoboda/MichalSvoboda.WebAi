@@ -30,8 +30,15 @@ public class ProjektyModel : PageModel
             return;
         }
 
-        var json = System.IO.File.ReadAllText(dataPath);
-        Projects = JsonSerializer.Deserialize<List<ProjectItem>>(json, JsonOptions) ?? [];
+        try
+        {
+            var json = System.IO.File.ReadAllText(dataPath);
+            Projects = JsonSerializer.Deserialize<List<ProjectItem>>(json, JsonOptions) ?? [];
+        }
+        catch
+        {
+            Projects = [];
+        }
     }
 
     public sealed record ProjectItem(

@@ -57,11 +57,11 @@
               <div class="project-links">
                 @if (!string.IsNullOrEmpty(project.Url))
                 {
-                  <a class="btn primary" href="@project.Url" target="_blank" rel="noreferrer">Zobrazit ↗</a>
+                  <a class="btn primary" href="@project.Url" target="_blank" rel="noopener noreferrer">Zobrazit ↗</a>
                 }
                 @if (!string.IsNullOrEmpty(project.DownloadUrl))
                 {
-                  <a class="btn" href="@project.DownloadUrl" target="_blank" rel="noreferrer">Stáhnout ↓</a>
+                  <a class="btn" href="@project.DownloadUrl" target="_blank" rel="noopener noreferrer">Stáhnout ↓</a>
                 }
               </div>
             }
