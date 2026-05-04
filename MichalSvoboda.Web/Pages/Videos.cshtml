@@ -1,28 +1,28 @@
 @page "/videos"
 @model MichalSvoboda.Web.Pages.VideosModel
 @{
-    ViewData["Title"] = "Michal Svoboda - Videa";
+    ViewData["Title"] = "Michal Svoboda - Videos";
 }
 
 <section class="section videos-section">
   <div class="videos-header">
     <div>
       <div class="badge">Video Library</div>
-      <h1>Videa z FTP adresare</h1>
+      <h1>Videos from the FTP folder</h1>
     </div>
     <p class="lead">
-      Nahraj video soubor do <code>wwwroot/videos</code> a tady se automaticky objevi.
-      Prime URL videa bude fungovat i mimo tento web.
+      Upload a video file to <code>wwwroot/videos</code> and it will appear here automatically.
+      The direct video URL will also work outside this website.
     </p>
   </div>
 
   @if (Model.Videos.Count == 0)
   {
     <article class="card">
-      <h2>Zatim tu nic neni</h2>
+      <h2>No videos yet</h2>
       <p class="muted">
-        Na FTP nahraj <code>.mp4</code>, <code>.webm</code>, <code>.mov</code>, <code>.m4v</code> nebo <code>.ogg</code>
-        do slozky <code>wwwroot/videos</code>.
+        Upload a <code>.mp4</code>, <code>.webm</code>, <code>.mov</code>, <code>.m4v</code>, or <code>.ogg</code>
+        file to <code>wwwroot/videos</code>.
       </p>
     </article>
   }
@@ -35,7 +35,7 @@
           <div class="video-frame">
             <video controls preload="metadata" playsinline>
               <source src="@video.Url" type="@video.ContentType" />
-              Vas prohlizec prehravani videa nepodporuje.
+              Your browser does not support video playback.
             </video>
           </div>
 
@@ -47,11 +47,11 @@
             <div class="small muted">@video.SizeLabel</div>
           </div>
 
-          <label class="video-link-label" for="@video.InputId">Prime URL</label>
+          <label class="video-link-label" for="@video.InputId">Direct URL</label>
           <input id="@video.InputId" class="video-link" type="text" value="@video.Url" readonly />
 
           <div class="cta">
-            <a class="btn primary" href="@video.Url" target="_blank" rel="noreferrer">Otevrit video</a>
+            <a class="btn primary" href="@video.Url" target="_blank" rel="noreferrer">Open video</a>
           </div>
         </article>
       }
